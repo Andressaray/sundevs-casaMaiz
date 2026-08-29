@@ -1,123 +1,106 @@
-import { View, StyleSheet} from 'react-native';
-import { useLinkBuilder, useTheme } from '@react-navigation/native';
-import { Text, PlatformPressable } from '@react-navigation/elements';
-import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BlurView } from '@react-native-community/blur';
-import HomeStack from '../stacks/home';
-import MenuStack from '../stacks/menu';
-
-function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-  const { colors } = useTheme();
-  const { buildHref } = useLinkBuilder();
-  const insets = useSafeAreaInsets();
-
-  return (
-    <View style={{
-      flexDirection: 'row',
-      // backgroundColor: colors.card,
-      // borderTopColor: colors.border,
-      // borderTopWidth: 1,
-      paddingBottom: insets.bottom,
-      paddingHorizontal: 0,
-      height: 60 + insets.bottom,
-      justifyContent: 'space-around',
-      alignItems: 'center',
-    }}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-              ? options.title
-              : route.name;
-
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        return (
-          <PlatformPressable
-            key={route.key}
-            href={buildHref(route.name, route.params)}
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            accessibilityRole="tab"
-            testID={options.tabBarButtonTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{
-              flex: 1,
-              paddingVertical: 8,
-              paddingHorizontal: 12,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderBottomWidth: isFocused ? 2 : 0,
-              borderBottomColor: isFocused ? colors.primary : 'transparent',
-            }}
-          >
-            <Text style={{
-              color: isFocused ? colors.primary : colors.text,
-              fontWeight: isFocused ? '600' : '400',
-              fontSize: 12,
-            }}>
-              {label as string}
-            </Text>
-          </PlatformPressable>
-        );
-      })}
-    </View>
-  );
-}
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Platform } from 'react-native';
+import HomeStack, { HOME_STACK } from '../stacks/home';
+import MenuStack, { MENU_STACK } from '../stacks/menu';
+import HomeIcon from '@/ui/icons/homeIcon';
+import useBootstrap from '@/hooks/useGetBootstrap';
+import useTranslation from '@/hooks/useTranslation';
+import ReservationIcon from '@/ui/icons/reservationIcon';
+import PrivacyIcon from '@/ui/icons/privacyIcon';
+import MenuIcon from '@/ui/icons/menuIcon';
+import ReservationStack, { RESERVATION_STACK } from '../stacks/reservation';
+import PrivacyStack, { PRIVACY_STACK } from '../stacks/privacy';
+import { useThemeColors } from '@/theme/colors';
 
 const Tab = createBottomTabNavigator();
 
 function TabsStack() {
+  const bootstrap = useBootstrap();
+  const colors = useThemeColors();
+  const keysOfNavigation = bootstrap.data?.data.navigation.items.map((item) => item.destination.key);
+  const { t } = useTranslation();
+
+  const tabs = {
+    home: {
+      route: HOME_STACK,
+      stack: HomeStack,
+      label: t('home'),
+      icon: HomeIcon
+    },
+    menu: {
+      route: MENU_STACK,
+      stack: MenuStack,
+      label: t('menu'),
+      icon: MenuIcon
+    },
+    reservations: {
+      route: RESERVATION_STACK,
+      stack: ReservationStack,
+      label: t('reservations'),
+      icon: ReservationIcon
+    },
+    privacy: {
+      route: PRIVACY_STACK,
+      stack: PrivacyStack,
+      label: t('privacy'),
+      icon: PrivacyIcon
+    }
+  };
+
+  const tabsAvailableArray = Object.entries(tabs)
+    .filter(([key]) => keysOfNavigation?.includes(key))
+    .map(([key, value]) => ({
+      key,
+      ...value
+    }));
+
   return (
-    <Tab.Navigator 
-      screenOptions={{
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarStyle: { position: 'absolute' },
-        tabBarBackground: () => <BlurView blurType='light' blurAmount={200} style={StyleSheet.absoluteFill} />
-      }}
-      // tabBar={(props) => <MyTabBar {...props} />}
+        tabBarStyle: {
+          backgroundColor: colors.bgSecondary,
+          borderTopColor: colors.borderColor,
+          borderTopWidth: 1,
+          paddingBottom: Platform.OS === 'ios' ? 20 : 8,
+          paddingTop: 10,
+          height: Platform.OS === 'ios' ? 85 : 65,
+        },
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '600',
+          fontFamily: 'Poppins',
+          marginTop: 4,
+        },
+        tabBarIconStyle: {
+          width: 24,
+          height: 24,
+        },
+        tabBarActiveTintColor: colors.accentPrimary,
+        tabBarInactiveTintColor: colors.textTertiary,
+      })}
     >
-      <Tab.Screen 
-        name="HomeStack" 
-        component={HomeStack}
-        options={{
-          tabBarLabel: 'Home',
-          title: 'Home',
-        }}
-      />
-      <Tab.Screen 
-        name="MenuStack" 
-        component={MenuStack}
-        options={{
-          tabBarLabel: 'Menú',
-          title: 'Menú',
-        }}
-      />
+      {tabsAvailableArray.map((tab) => (
+        <Tab.Screen
+          key={tab.key}
+          name={tab.route}
+          component={tab.stack}
+          options={{
+            tabBarLabel: tab.label,
+            title: tab.label,
+            tabBarIcon: ({ color, size }) => (
+              <tab.icon 
+                width={size} 
+                height={size} 
+                color={color}
+                stroke={color}
+              />
+            ),
+          }}
+        />
+      ))}
     </Tab.Navigator>
   );
 }
 
-export default TabsStack
+export default TabsStack;
