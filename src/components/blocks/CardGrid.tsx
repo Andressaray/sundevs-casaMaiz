@@ -61,7 +61,7 @@ const CardGrid: React.FC<CardGridProps> = ({ eyebrow, title, cards }) => {
               <Text style={[styles.cardDescription, TYPOGRAPHY.caption, { color: colors.textSecondary, marginVertical: SPACING.md }]}>
                 {card.description}
               </Text>
-              <Text style={[styles.price, { color: colors.accentPrimary, fontSize: 20, fontWeight: '600' }]}>
+              <Text style={[styles.price, { color: colors.accentPrimary, fontSize: 20, fontWeight: '600', fontFamily: 'Poppins' }]}>
                 {card.price}
               </Text>
             </View>
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: SPACING.lg,
-    fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
   },
   grid: {
     gap: SPACING.lg,
@@ -119,7 +118,6 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     marginBottom: SPACING.xs,
-    fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
     fontSize: 18,
     fontWeight: '600',
   },

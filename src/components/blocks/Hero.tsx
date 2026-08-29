@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
   },
   headline: {
     color: 'white',
-    fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
     fontSize: 36,
     fontWeight: '700',
     lineHeight: 44,

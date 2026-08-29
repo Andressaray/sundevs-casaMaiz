@@ -51,7 +51,7 @@ const PromoRail: React.FC<PromoRailProps> = ({ title, promotions }) => {
                 <Text style={[styles.promoEyebrow, TYPOGRAPHY.eyebrow, { color: 'white' }]}>
                   {promo.eyebrow}
                 </Text>
-                <Text style={[styles.promoTitle, { color: 'white', fontSize: 24, fontWeight: '700', marginVertical: SPACING.md, fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' }]}>
+                <Text style={[styles.promoTitle, { color: 'white', fontSize: 24, fontWeight: '700', marginVertical: SPACING.md, fontFamily: 'Poppins' }]}>
                   {promo.title}
                 </Text>
                 <Text style={[styles.promoDescription, TYPOGRAPHY.caption, { color: 'rgba(255,255,255,0.95)', marginBottom: spacing }]}>
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: SPACING.lg,
-    fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
   },
   promos: {
     gap: SPACING.lg,

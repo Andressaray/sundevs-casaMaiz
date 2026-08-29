@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
   eyebrowText: {},
   headline: {
     color: 'white',
-    fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
     textAlign: 'center',
     fontSize: 32,
     fontWeight: '700',

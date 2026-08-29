@@ -19,39 +19,46 @@ export const RADIUS = {
 export const TYPOGRAPHY = {
   h1: {
     fontSize: 36,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
     lineHeight: 42,
+    fontFamily: 'Poppins',
   },
   h2: {
     fontSize: 28,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
     lineHeight: 34,
+    fontFamily: 'Poppins',
   },
   h3: {
     fontSize: 22,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
     lineHeight: 28,
+    fontFamily: 'Poppins',
   },
   h4: {
     fontSize: 18,
     fontWeight: '600' as const,
     lineHeight: 24,
+    fontFamily: 'Poppins',
   },
   body: {
     fontSize: 15,
     fontWeight: '400' as const,
     lineHeight: 22,
+    fontFamily: 'Poppins',
   },
   caption: {
     fontSize: 13,
     fontWeight: '500' as const,
     lineHeight: 18,
+    fontFamily: 'Poppins',
   },
   eyebrow: {
     fontSize: 12,
-    fontWeight: '600' as const,
+    fontWeight: '700' as const,
     lineHeight: 16,
     letterSpacing: 0.8,
+    fontFamily: 'Poppins',
   },
 };
 
