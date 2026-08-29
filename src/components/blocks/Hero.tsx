@@ -42,14 +42,9 @@ const Hero: React.FC<HeroProps> = ({ eyebrow, headline, description, image, acti
         />
       )}
       
-      {/* Overlay dinámico según tema */}
       <View style={[
         StyleSheet.absoluteFill,
-        {
-          backgroundColor: colors.currentTheme === 'dark' 
-            ? 'rgba(90, 70, 45, 0.85)'
-            : 'rgba(139, 111, 71, 0.75)',
-        }
+        { backgroundColor: 'rgba(139, 111, 71, 0.75)' }
       ]} />
 
       <View style={[styles.content, { zIndex: 1 }]}>
@@ -77,15 +72,14 @@ const Hero: React.FC<HeroProps> = ({ eyebrow, headline, description, image, acti
                 action.variant === 'secondary' ? styles.secondaryButton : styles.primaryButton,
                 {
                   borderRadius: radius,
-                  backgroundColor: action.variant === 'primary' 
-                    ? colors.accentPrimaryLight 
-                    : 'transparent',
-                  borderColor: 'white',
+                  opacity: pressed ? 0.8 : 1,
                 },
-                pressed && styles.pressed,
               ]}
             >
-              <Text style={[styles.buttonText, action.variant === 'secondary' && styles.secondaryButtonText]}>
+              <Text style={[
+                styles.buttonText, 
+                action.variant === 'secondary' && styles.secondaryButtonText
+              ]}>
                 {action.label}
               </Text>
             </Pressable>
@@ -101,6 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     minHeight: 340,
     gap: SPACING.lg,
+    backgroundColor: '#8B6F47',
     overflow: 'hidden',
   },
   content: {
@@ -137,18 +132,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  primaryButton: {},
+  primaryButton: {
+    backgroundColor: '#D4A574',
+  },
   secondaryButton: {
     borderWidth: 2,
+    borderColor: 'white',
+    backgroundColor: 'transparent',
   },
   buttonText: {
-    color: '#5C4A35',
+    color: '#3D3530',      // Color oscuro visible en light mode
     fontWeight: '700',
     fontSize: 14,
     letterSpacing: 0.5,
   },
   secondaryButtonText: {
-    color: 'white',
+    color: 'white',        // Blanco para secundario
   },
   pressed: {
     opacity: 0.8,
