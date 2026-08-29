@@ -5,9 +5,7 @@ import { SPACING, TYPOGRAPHY, getRadius, getSpacing } from '../../theme/styles';
 
 interface Action {
   label: string;
-  destination?: {
-    path: string;
-  };
+  destination?: { path: string };
   href?: string;
 }
 
@@ -44,11 +42,13 @@ const Hero: React.FC<HeroProps> = ({ eyebrow, headline, description, image, acti
         />
       )}
       
-      {/* Overlay degradado para mejor legibilidad y efecto restaurante */}
+      {/* Overlay dinámico según tema */}
       <View style={[
         StyleSheet.absoluteFill,
         {
-          backgroundColor: 'rgba(139, 111, 71, 0.75)',
+          backgroundColor: colors.currentTheme === 'dark' 
+            ? 'rgba(90, 70, 45, 0.85)'
+            : 'rgba(139, 111, 71, 0.75)',
         }
       ]} />
 
@@ -75,7 +75,13 @@ const Hero: React.FC<HeroProps> = ({ eyebrow, headline, description, image, acti
               style={({ pressed }) => [
                 styles.button,
                 action.variant === 'secondary' ? styles.secondaryButton : styles.primaryButton,
-                { borderRadius: radius },
+                {
+                  borderRadius: radius,
+                  backgroundColor: action.variant === 'primary' 
+                    ? colors.accentPrimaryLight 
+                    : 'transparent',
+                  borderColor: 'white',
+                },
                 pressed && styles.pressed,
               ]}
             >
@@ -95,7 +101,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     minHeight: 340,
     gap: SPACING.lg,
-    backgroundColor: '#8B6F47',
     overflow: 'hidden',
   },
   content: {
@@ -132,13 +137,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  primaryButton: {
-    backgroundColor: '#D4A574',
-  },
+  primaryButton: {},
   secondaryButton: {
     borderWidth: 2,
-    borderColor: 'white',
-    backgroundColor: 'transparent',
   },
   buttonText: {
     color: '#5C4A35',

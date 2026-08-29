@@ -42,7 +42,9 @@ const CardGrid: React.FC<CardGridProps> = ({ eyebrow, title, cards }) => {
                 backgroundColor: colors.bgSecondary,
                 borderRadius: radius,
                 borderColor: colors.borderColor,
-                ...getShadow(),
+                shadowColor: colors.shadowColor,
+                shadowOpacity: 0.12,
+                shadowRadius: 4,
               },
             ]}
           >
@@ -61,7 +63,7 @@ const CardGrid: React.FC<CardGridProps> = ({ eyebrow, title, cards }) => {
               <Text style={[styles.cardDescription, TYPOGRAPHY.caption, { color: colors.textSecondary, marginVertical: SPACING.md }]}>
                 {card.description}
               </Text>
-              <Text style={[styles.price, { color: colors.accentPrimary, fontSize: 20, fontWeight: '600', fontFamily: 'Poppins' }]}>
+              <Text style={[styles.price, { color: colors.accentPrimary, fontFamily: 'Poppins' }]}>
                 {card.price}
               </Text>
             </View>
@@ -90,19 +92,14 @@ const styles = StyleSheet.create({
   },
   card: {
     overflow: 'hidden',
-    borderWidth: 0,
+    borderWidth: 1,
     elevation: 8,
-    shadowColor: '#8B6F47',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
   },
   cardImage: {
     width: '100%',
     height: 220,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5E6D3',
   },
   image: {
     width: '100%',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, Image, Platform } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { useThemeColors } from '../../theme/colors';
 import { SPACING, TYPOGRAPHY, getShadow, getRadius, getSpacing } from '../../theme/styles';
 
@@ -41,8 +41,10 @@ const PromoRail: React.FC<PromoRailProps> = ({ title, promotions }) => {
               styles.promoCard,
               {
                 borderRadius: radius,
-                backgroundColor: '#C65D3B',
-                ...getShadow('medium'),
+                backgroundColor: colors.accentSecondary,
+                shadowColor: colors.shadowColor,
+                shadowOpacity: 0.15,
+                shadowRadius: 6,
               },
             ]}
           >
@@ -51,7 +53,7 @@ const PromoRail: React.FC<PromoRailProps> = ({ title, promotions }) => {
                 <Text style={[styles.promoEyebrow, TYPOGRAPHY.eyebrow, { color: 'white' }]}>
                   {promo.eyebrow}
                 </Text>
-                <Text style={[styles.promoTitle, { color: 'white', fontSize: 24, fontWeight: '700', marginVertical: SPACING.md, fontFamily: 'Poppins' }]}>
+                <Text style={[styles.promoTitle, { color: 'white', fontSize: 24, fontWeight: '700', marginVertical: SPACING.md }]}>
                   {promo.title}
                 </Text>
                 <Text style={[styles.promoDescription, TYPOGRAPHY.caption, { color: 'rgba(255,255,255,0.95)', marginBottom: spacing }]}>
@@ -61,11 +63,12 @@ const PromoRail: React.FC<PromoRailProps> = ({ title, promotions }) => {
                   onPress={promo.cta.onPress}
                   style={({ pressed }) => [
                     styles.promoButton,
-                    { borderRadius: radius / 2 },
-                    pressed && styles.pressed,
+                    { borderRadius: radius / 2, opacity: pressed ? 0.85 : 1 },
                   ]}
                 >
-                  <Text style={styles.promoButtonText}>{promo.cta.label}</Text>
+                  <Text style={[styles.promoButtonText, { color: colors.accentSecondary }]}>
+                    {promo.cta.label}
+                  </Text>
                 </Pressable>
               </View>
 
@@ -98,10 +101,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     minHeight: 200,
     elevation: 6,
-    shadowColor: '#8B6F47',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
   },
   promoLayout: {
     flexDirection: 'row',
@@ -134,7 +133,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   promoButtonText: {
-    color: '#C65D3B',
     fontWeight: '700',
     fontSize: 12,
     letterSpacing: 0.5,
@@ -151,10 +149,6 @@ const styles = StyleSheet.create({
   },
   emoji: {
     fontSize: 72,
-  },
-  pressed: {
-    opacity: 0.8,
-    transform: [{ scale: 0.96 }],
   },
 });
 
