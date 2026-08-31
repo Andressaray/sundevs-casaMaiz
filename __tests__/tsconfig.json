@@ -1,0 +1,27 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "..",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "types": ["jest", "node"],
+    "paths": {
+      "@/*": ["src/*"],
+      "@services/*": ["src/services/*"],
+      "@features/*": ["src/features/*"],
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@screens/*": ["src/screens/*"],
+      "@models/*": ["src/models/*"],
+      "@store/*": ["src/store/*"],
+      "@context/*": ["src/context/*"],
+      "@tests/*": ["__tests__/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../src/**/*", "../App.tsx"]
+}
