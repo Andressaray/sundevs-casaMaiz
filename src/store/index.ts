@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 export const useAppStore = create<AppStore>((set) => ({
   theme: "light",
-  language: "es",
+  language: "en",
   languages: ["es", "en"],
   setTheme: (theme: Theme) => set({ theme }),
   setLanguage: (language: Language) => set({ language }),
