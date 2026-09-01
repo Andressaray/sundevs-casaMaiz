@@ -1,23 +1,23 @@
-import React from 'react';
-import { fireEvent, screen } from '@testing-library/react-native';
-import NotFoundScreen from '@features/notfound/screens/notfound';
-import { renderWithProviders } from '@tests/utils';
+import React from "react";
+import { fireEvent, screen } from "@testing-library/react-native";
+import NotFoundScreen from "@/features/notfound/screens/notfound";
+import { renderWithProviders } from "@tests/utils";
 import {
   mockCanGoBack,
   mockGoBack,
   mockReset,
-} from '@tests/__mocks__/navigation.mock';
-import es from '@/config/languages/es.json';
+} from "@tests/__mocks__/navigation.mock";
+import es from "@/config/languages/es.json";
 
-jest.mock('@react-navigation/native', () =>
-  require('@tests/__mocks__/navigation.mock').navigationMockFactory(),
+jest.mock("@react-navigation/native", () =>
+  require("@tests/__mocks__/navigation.mock").navigationMockFactory(),
 );
 
-describe('features/notfound / NotFoundScreen', () => {
-  it('muestra el 404 y los textos traducidos', () => {
+describe("features/notfound / NotFoundScreen", () => {
+  it("muestra el 404 y los textos traducidos", () => {
     renderWithProviders(<NotFoundScreen />);
 
-    expect(screen.getByText('404')).toBeOnTheScreen();
+    expect(screen.getByText("404")).toBeOnTheScreen();
     expect(screen.getByText(es.page_not_found)).toBeOnTheScreen();
     expect(screen.getByText(es.page_not_found_description)).toBeOnTheScreen();
   });
@@ -29,11 +29,11 @@ describe('features/notfound / NotFoundScreen', () => {
 
     expect(mockReset).toHaveBeenCalledWith({
       index: 0,
-      routes: [{ name: 'Tabs', params: { screen: 'HomeStack' } }],
+      routes: [{ name: "Tabs", params: { screen: "HomeStack" } }],
     });
   });
 
-  it('vuelve atras si hay historial', () => {
+  it("vuelve atras si hay historial", () => {
     mockCanGoBack.mockReturnValue(true);
     renderWithProviders(<NotFoundScreen />);
 
@@ -43,7 +43,7 @@ describe('features/notfound / NotFoundScreen', () => {
     expect(mockReset).not.toHaveBeenCalled();
   });
 
-  it('cae al inicio si no hay historial', () => {
+  it("cae al inicio si no hay historial", () => {
     mockCanGoBack.mockReturnValue(false);
     renderWithProviders(<NotFoundScreen />);
 

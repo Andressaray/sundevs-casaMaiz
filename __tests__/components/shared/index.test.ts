@@ -4,26 +4,26 @@ import {
   GlassContainer,
   GlassInput,
   GlassBadge,
-} from '@/components/glasscomponents';
+} from "@/components/glasscomponents";
 
-describe('components/shared / index exports', () => {
-  it('exporta GlassCard', () => {
+describe("components/shared / index exports", () => {
+  it("exporta GlassCard", () => {
     expect(GlassCard).toBeDefined();
   });
 
-  it('exporta GlassButton', () => {
+  it("exporta GlassButton", () => {
     expect(GlassButton).toBeDefined();
   });
 
-  it('exporta GlassContainer', () => {
+  it("exporta GlassContainer", () => {
     expect(GlassContainer).toBeDefined();
   });
 
-  it('exporta GlassInput', () => {
+  it("exporta GlassInput", () => {
     expect(GlassInput).toBeDefined();
   });
 
-  it('exporta GlassBadge', () => {
+  it("exporta GlassBadge", () => {
     expect(GlassBadge).toBeDefined();
   });
 });

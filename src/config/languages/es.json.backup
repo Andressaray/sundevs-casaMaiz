@@ -1,0 +1,151 @@
+{
+  "hi": "Hola",
+  "home": "Inicio",
+  "privacy": "Privacidad",
+  "menu": "Menu",
+  "reservations": "Reservas",
+  "error": "Error",
+  "common": {
+    "loading": "Cargando...",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "accept": "Aceptar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "update": "Actualizar",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información",
+    "go_home": "Ir al inicio",
+    "go_back": "Volver",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK"
+  },
+  "loading": {
+    "preparing": "Preparando experiencia",
+    "loading_reservations": "Cargando reservas...",
+    "loading_privacy": "Cargando política de privacidad..."
+  },
+  "errors": {
+    "general_error": "Algo salió mal",
+    "load_content_error": "Hubo un error al cargar el contenido",
+    "load_restaurant_content": "No pudimos cargar el contenido del restaurante",
+    "load_menu_error": "No pudimos cargar el menú del restaurante",
+    "connection_error": "Error de conexión",
+    "server_error": "Error del servidor",
+    "network_error": "Error de red",
+    "details": "Detalles:",
+    "try_again": "Intenta de nuevo"
+  },
+  "errorFallback": {
+    "suggestions_title": "💡 Sugerencias:",
+    "check_connection": "• Verifica tu conexión a internet",
+    "retry_later": "• Intenta reintentar después de unos segundos",
+    "reload_app": "• Recarga la aplicación si el problema persiste"
+  },
+  "page_not_found": "Página no encontrada",
+  "page_not_found_description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+  "empty": {
+    "home": {
+      "title": "No hay contenido disponible",
+      "description": "Por el momento, no hay contenido para mostrar en la página de inicio. Intenta más tarde."
+    },
+    "menu": {
+      "title": "Menú no disponible",
+      "description": "El menú no está disponible en este momento. Por favor, intenta más tarde o contacta con el restaurante."
+    },
+    "reservations": {
+      "title": "Sin reservas",
+      "description": "No tienes ninguna reserva en este momento.\n¿Por qué no haces una reserva en nuestro restaurante?",
+      "create_new": "Crear reserva",
+      "subtitle": "Tus reservas aparecerán aquí"
+    },
+    "privacy": {
+      "title": "Política de privacidad no disponible",
+      "description": "La política de privacidad no está disponible en este momento.\nPor favor, intenta más tarde.",
+      "subtitle": "Nos preocupa tu privacidad"
+    }
+  },
+  "reservations": {
+    "title": "Mis Reservas",
+    "subtitle": "Gestiona tus reservas en el restaurante",
+    "screens": {
+      "list": "Mis Reservas",
+      "create": "Nueva Reserva",
+      "detail": "Detalles de la Reserva"
+    },
+    "status": {
+      "confirmed": "Confirmada",
+      "pending": "Pendiente",
+      "cancelled": "Cancelada",
+      "completed": "Completada"
+    },
+    "labels": {
+      "date": "Fecha",
+      "time": "Hora",
+      "guests": "Número de personas",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "special_requests": "Solicitudes especiales",
+      "notes": "Notas"
+    },
+    "actions": {
+      "create": "Crear Reserva",
+      "cancel": "Cancelar Reserva",
+      "edit": "Editar Reserva",
+      "confirm": "Confirmar Reserva",
+      "reschedule": "Reprogramar"
+    },
+    "messages": {
+      "created_success": "Reserva creada exitosamente",
+      "updated_success": "Reserva actualizada exitosamente",
+      "cancelled_success": "Reserva cancelada exitosamente",
+      "error_creating": "Error al crear la reserva",
+      "error_updating": "Error al actualizar la reserva",
+      "error_cancelling": "Error al cancelar la reserva"
+    },
+    "confirmation": {
+      "title": "¿Estás seguro?",
+      "cancel_message": "¿Deseas cancelar esta reserva?",
+      "this_action": "Esta acción no puede ser desecha."
+    }
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "subtitle": "Cómo protegemos tu información",
+    "screens": {
+      "policy": "Política de Privacidad"
+    },
+    "sections": {
+      "introduction": "Introducción",
+      "data_collection": "Recopilación de Datos",
+      "data_usage": "Uso de Datos",
+      "data_protection": "Protección de Datos",
+      "your_rights": "Tus Derechos",
+      "contact": "Contacto"
+    },
+    "labels": {
+      "last_updated": "Última actualización",
+      "effective_date": "Fecha de entrada en vigor",
+      "version": "Versión"
+    },
+    "actions": {
+      "accept": "Aceptar",
+      "decline": "Rechazar",
+      "read_full": "Leer la política completa",
+      "download": "Descargar PDF",
+      "share": "Compartir"
+    },
+    "messages": {
+      "loading_error": "No pudimos cargar la política de privacidad",
+      "download_error": "Error al descargar el archivo",
+      "share_error": "Error al compartir",
+      "updated": "La política de privacidad ha sido actualizada"
+    }
+  }
+}

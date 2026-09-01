@@ -8,7 +8,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@services/*": ["src/services/*"],
-      "@features/*": ["src/features/*"],
+      "@/features/*": ["src/features/*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@hooks/*": ["src/hooks/*"],

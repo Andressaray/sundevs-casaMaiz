@@ -1,14 +1,14 @@
-import React, { PropsWithChildren, ReactElement } from 'react';
+import React, { PropsWithChildren, ReactElement } from "react";
 import {
   render,
   renderHook,
   RenderOptions,
-} from '@testing-library/react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ThemeProvider } from '@/theme/ThemeContext';
-import { createTestQueryClient } from './queryClient';
+} from "@testing-library/react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider } from "@/theme/ThemeContext";
+import { createTestQueryClient } from "./queryClient";
 
 export interface ProvidersOptions {
   withNavigation?: boolean;
@@ -47,7 +47,7 @@ export const buildWrapper = ({
 };
 
 export interface RenderWithProvidersOptions
-  extends Omit<RenderOptions, 'wrapper'>, ProvidersOptions {}
+  extends Omit<RenderOptions, "wrapper">, ProvidersOptions {}
 
 export const renderWithProviders = (
   ui: ReactElement,
@@ -65,7 +65,7 @@ export const renderWithProviders = (
 };
 
 export const renderHookWithProviders = <TResult, TProps>(
-  hook: (props: TProps) => TResult,
+  hook: (_props: TProps) => TResult,
   { withNavigation, queryClient, ...options }: RenderWithProvidersOptions = {},
 ) => {
   const client = queryClient ?? createTestQueryClient();

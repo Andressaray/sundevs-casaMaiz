@@ -1,5 +1,5 @@
-import { homePageFixture, menuPageFixture } from '@tests/fixtures/page.fixture';
-import { bootstrapFixture } from '@tests/fixtures/bootstrap.fixture';
+import { homePageFixture, menuPageFixture } from "@tests/fixtures/page.fixture";
+import { bootstrapFixture } from "@tests/fixtures/bootstrap.fixture";
 
 export const mockGetHomeService = jest.fn(async () => homePageFixture);
 export const mockGetMenuService = jest.fn(async () => menuPageFixture);
@@ -9,7 +9,7 @@ export const mockGetBootstrapData = jest.fn(async () => bootstrapFixture);
 export const homeServiceMockFactory = () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => ({
-    baseUrl: '/pages/home',
+    baseUrl: "/pages/home",
     getHomeService: mockGetHomeService,
   })),
 });
@@ -17,7 +17,7 @@ export const homeServiceMockFactory = () => ({
 export const menuServiceMockFactory = () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => ({
-    baseUrl: '/pages/menu',
+    baseUrl: "/pages/menu",
     getMenuService: mockGetMenuService,
   })),
 });
@@ -25,7 +25,7 @@ export const menuServiceMockFactory = () => ({
 export const pagesServiceMockFactory = () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => ({
-    baseUrl: '/pages',
+    baseUrl: "/pages",
     getDataByPage: mockGetDataByPage,
   })),
 });
@@ -33,7 +33,7 @@ export const pagesServiceMockFactory = () => ({
 export const bootstrapServiceMockFactory = () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => ({
-    baseUrl: '/bootstrap',
+    baseUrl: "/bootstrap",
     getBootstrapData: mockGetBootstrapData,
   })),
 });

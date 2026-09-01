@@ -1,13 +1,14 @@
 import { api } from "@services/index";
-import { BootstrapRequest } from "./bootstrap.service.t"
+
+import { ApiRequest } from "@/types/types";
 
 class BootstrapService {
-    baseUrl = '/bootstrap'
+  baseUrl = "/bootstrap";
 
-    getDataByPage = async (request: BootstrapRequest) => {
-        const response = await api.get(this.baseUrl, { params: request });
-        return response.data;
-    };
+  getBootstrapData = async (request: ApiRequest) => {
+    const response = await api.get(this.baseUrl, { params: request });
+    return response.data;
+  };
 }
 
-export default BootstrapService
+export default BootstrapService;

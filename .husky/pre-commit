@@ -1,0 +1,11 @@
+echo "🔍 Running TypeScript typecheck before commit..."
+npm run typecheck
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Typecheck failed. Fix the errors above before committing."
+  echo "   (skip with 'git commit --no-verify' if you really need to)"
+  exit 1
+fi
+
+echo "✅ Typecheck passed."

@@ -1,11 +1,11 @@
-import MockAdapter from 'axios-mock-adapter';
-import { api } from '@services/index';
+import MockAdapter from "axios-mock-adapter";
+import { api } from "@services/index";
 
 let adapter: MockAdapter | null = null;
 
 export const getApiMock = (): MockAdapter => {
   if (!adapter) {
-    adapter = new MockAdapter(api, { onNoMatch: 'throwException' });
+    adapter = new MockAdapter(api, { onNoMatch: "throwException" });
   }
   return adapter;
 };

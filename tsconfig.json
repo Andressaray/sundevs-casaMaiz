@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["ES2020", "dom", "dom.iterable"],
+    "lib": [
+      "ES2020",
+      "dom",
+      "dom.iterable"
+    ],
     "jsx": "react-native",
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -18,23 +22,61 @@
     "noImplicitReturns": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@services/*": ["src/services/*"],
-      "@features/*": ["src/features/*"],
-      "@components/*": ["src/components/*"],
-      "@config/*": ["src/config/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@types/*": ["src/types/*"],
-      "@assets/*": ["src/assets/*"],
-      "@styles/*": ["src/styles/*"],
-      "@navigation/*": ["src/navigation/*"],
-      "@screens/*": ["src/screens/*"],
-      "@models/*": ["src/models/*"],
-      "@store/*": ["src/store/*"],
-      "@context/*": ["src/context/*"]
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@/features/*": [
+        "src/features/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@navigation/*": [
+        "src/navigation/*"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@models/*": [
+        "src/models/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ]
+    },
+    "ignoreDeprecations": "6.0"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "build", "coverage"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage"
+  ]
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import React from "react";
+import { Pressable, Text, View } from "react-native";
 
 export interface EmptyComponentProps {
   icon?: React.ReactNode;

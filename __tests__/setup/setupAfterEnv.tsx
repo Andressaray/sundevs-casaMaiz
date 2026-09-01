@@ -1,8 +1,8 @@
-import { Animated } from 'react-native';
-import { cleanup, configure } from '@testing-library/react-native';
-import { setLogger } from 'react-query';
-import { useAppStore } from '@/store';
-import { resetApiMock } from '@tests/__mocks__/api.mock';
+import { Animated } from "react-native";
+import { cleanup, configure } from "@testing-library/react-native";
+import { setLogger } from "react-query";
+import { useAppStore } from "@/store";
+import { resetApiMock } from "@tests/__mocks__/api.mock";
 
 setLogger({
   log: () => {},
@@ -18,7 +18,7 @@ configure({
 const INITIAL_STORE_STATE = useAppStore.getState();
 
 beforeEach(() => {
-  jest.spyOn(Animated, 'loop').mockImplementation(
+  jest.spyOn(Animated, "loop").mockImplementation(
     () =>
       ({
         start: jest.fn(),

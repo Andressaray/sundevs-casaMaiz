@@ -1,0 +1,40 @@
+# Dependencias
+node_modules/
+vendor/
+
+# Archivos generados
+dist/
+build/
+.expo/
+.next/
+out/
+
+# Construcción React Native
+android/
+ios/
+*.jks
+*.keystore
+
+# Archivos compilados
+*.tgz
+*.snap
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitmodules
+
+# Métrica de compilación
+metro.config.js
+
+# Yarn y NPM
+yarn.lock
+package-lock.json
+
+# Archivos grandes
+*.mp4
+*.mov
+*.zip

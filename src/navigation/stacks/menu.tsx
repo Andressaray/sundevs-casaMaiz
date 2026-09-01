@@ -1,14 +1,17 @@
-import MenuScreen from '@features/menu/screens/menu';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import MenuScreen from "@/features/menu/screens/menu";
 
 const Stack = createNativeStackNavigator();
 
-const MenuStack = () => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name='Menu' component={MenuScreen} />
-        </Stack.Navigator>
-    )
-}
+export const MENU_STACK = "MenuStack";
 
-export default MenuStack
+const MenuStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Menu" component={MenuScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export default MenuStack;

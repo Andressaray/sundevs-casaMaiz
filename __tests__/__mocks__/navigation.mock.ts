@@ -25,11 +25,11 @@ export const resetNavigationMocks = (): void => {
 };
 
 export const navigationMockFactory = () => {
-  const actual = jest.requireActual('@react-navigation/native');
+  const actual = jest.requireActual("@react-navigation/native");
   return {
     ...actual,
     useNavigation: () => mockNavigation,
-    useRoute: () => ({ key: 'test-route', name: 'TestScreen', params: {} }),
+    useRoute: () => ({ key: "test-route", name: "TestScreen", params: {} }),
     useIsFocused: () => true,
     useFocusEffect: (callback: () => void) => callback(),
   };

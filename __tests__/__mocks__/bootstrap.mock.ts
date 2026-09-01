@@ -1,5 +1,5 @@
-import { bootstrapFixture } from '@tests/fixtures/bootstrap.fixture';
-import type { Bootstrap } from '@/types/bootstrap.types';
+import { bootstrapFixture } from "@tests/fixtures/bootstrap.fixture";
+import type { Bootstrap } from "@/types/bootstrap.types";
 
 export const mockBootstrapRefetch = jest.fn(async () => bootstrapFixture);
 

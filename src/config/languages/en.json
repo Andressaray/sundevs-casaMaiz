@@ -1,0 +1,168 @@
+{
+  "hi": "Hello",
+  "home": "Home",
+  "menu": "Menu",
+  "error": "Error",
+  "common": {
+    "loading": "Loading...",
+    "retry": "Retry",
+    "close": "Close",
+    "accept": "Accept",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information",
+    "go_home": "Go to home",
+    "go_back": "Go back",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK"
+  },
+  "loading": {
+    "preparing": "Preparing experience",
+    "loading_reservations": "Loading reservations...",
+    "loading_privacy": "Loading privacy policy..."
+  },
+  "errors": {
+    "general_error": "Something went wrong",
+    "load_content_error": "There was an error loading the content",
+    "load_restaurant_content": "We couldn't load the restaurant content",
+    "load_menu_error": "We couldn't load the restaurant menu",
+    "connection_error": "Connection error",
+    "server_error": "Server error",
+    "network_error": "Network error",
+    "details": "Details:",
+    "try_again": "Try again"
+  },
+  "errorFallback": {
+    "suggestions_title": "💡 Suggestions:",
+    "check_connection": "• Check your internet connection",
+    "retry_later": "• Try again after a few seconds",
+    "reload_app": "• Reload the app if the problem persists"
+  },
+  "page_not_found": "Page not found",
+  "page_not_found_description": "Sorry, the page you are looking for does not exist or has been moved.",
+  "empty": {
+    "home": {
+      "title": "No content available",
+      "description": "There is currently no content to display on the home page. Please try again later."
+    },
+    "menu": {
+      "title": "Menu not available",
+      "description": "The menu is not available at this time. Please try again later or contact the restaurant."
+    },
+    "reservations": {
+      "title": "No reservations",
+      "description": "You have no reservations at this time.\nWhy not make a reservation at our restaurant?",
+      "create_new": "Create reservation",
+      "subtitle": "Your reservations will appear here"
+    },
+    "privacy": {
+      "title": "Privacy policy not available",
+      "description": "The privacy policy is not available at this time.\nPlease try again later.",
+      "subtitle": "Your privacy matters to us"
+    }
+  },
+  "reservations": {
+    "title": "My Reservations",
+    "tab": "Reservations",
+    "subtitle": "Manage your restaurant reservations",
+    "screens": {
+      "list": "My Reservations",
+      "create": "New Reservation",
+      "detail": "Reservation Details"
+    },
+    "status": {
+      "confirmed": "Confirmed",
+      "pending": "Pending",
+      "cancelled": "Cancelled",
+      "completed": "Completed"
+    },
+    "labels": {
+      "date": "Date",
+      "time": "Time",
+      "guests": "Number of guests",
+      "name": "Name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "special_requests": "Special requests",
+      "notes": "Notes"
+    },
+    "actions": {
+      "create": "Create Reservation",
+      "cancel": "Cancel Reservation",
+      "edit": "Edit Reservation",
+      "confirm": "Confirm Reservation",
+      "reschedule": "Reschedule"
+    },
+    "messages": {
+      "created_success": "Reservation created successfully",
+      "updated_success": "Reservation updated successfully",
+      "cancelled_success": "Reservation cancelled successfully",
+      "error_creating": "Error creating reservation",
+      "error_updating": "Error updating reservation",
+      "error_cancelling": "Error cancelling reservation"
+    },
+    "confirmation": {
+      "title": "Are you sure?",
+      "cancel_message": "Do you want to cancel this reservation?",
+      "this_action": "This action cannot be undone."
+    },
+    "form": {
+      "name_placeholder": "E.g. John Smith",
+      "phone_placeholder": "E.g. +1 555 123 4567",
+      "date_placeholder": "Select a date",
+      "submitting": "Submitting...",
+      "previous_month": "Previous month",
+      "next_month": "Next month",
+      "errors": {
+        "name_required": "Name is required",
+        "name_too_short": "Name must be at least 3 characters",
+        "phone_required": "Phone number is required",
+        "phone_invalid": "Enter a valid phone number",
+        "date_required": "Select a date",
+        "date_invalid": "The date is not valid",
+        "date_past": "Choose a date from today onward"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "tab": "Privacidad",
+    "subtitle": "How we protect your information",
+    "screens": {
+      "policy": "Privacy Policy"
+    },
+    "sections": {
+      "introduction": "Introduction",
+      "data_collection": "Data Collection",
+      "data_usage": "Data Usage",
+      "data_protection": "Data Protection",
+      "your_rights": "Your Rights",
+      "contact": "Contact"
+    },
+    "labels": {
+      "last_updated": "Last updated",
+      "effective_date": "Effective date",
+      "version": "Version"
+    },
+    "actions": {
+      "accept": "Accept",
+      "decline": "Decline",
+      "read_full": "Read full policy",
+      "download": "Download PDF",
+      "share": "Share"
+    },
+    "messages": {
+      "loading_error": "We couldn't load the privacy policy",
+      "download_error": "Error downloading file",
+      "share_error": "Error sharing",
+      "updated": "The privacy policy has been updated"
+    }
+  }
+}

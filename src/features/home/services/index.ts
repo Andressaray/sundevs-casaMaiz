@@ -1,13 +1,14 @@
 import { api } from "@services/index";
-import { BootstrapRequest } from "../types/boostrap";
+
+import { ApiRequest } from "@/types/types";
 
 class HomeService {
-    baseUrl = '/'
+  baseUrl = "/pages/home";
 
-    getBootstrapService = async (request: BootstrapRequest) => {
-        const response = await api.get(this.baseUrl, { params: request });
-        return response.data;
-    };
+  getHomeService = async (request: ApiRequest) => {
+    const response = await api.get(this.baseUrl, { params: request });
+    return response.data;
+  };
 }
 
-export default HomeService
+export default HomeService;

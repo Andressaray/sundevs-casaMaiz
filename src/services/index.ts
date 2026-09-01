@@ -1,9 +1,6 @@
-// api/axios.ts
-
 import axios from "axios";
-// import { useAuthStore } from "@/stores/auth.store";
 
-const baseURL = "";
+const baseURL = "https://payload-cms-poc-seven.vercel.app/api/content/v1/";
 
 export const api = axios.create({
   baseURL,
@@ -15,12 +12,6 @@ export const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    // const { accessToken } = useAuthStore.getState();
-
-    // if (accessToken) {
-    //   config.headers.Authorization = `Bearer ${accessToken}`;
-    // }
-
     return config;
   },
   (error) => Promise.reject(error),
@@ -30,8 +21,15 @@ api.interceptors.response.use(
   (response) => response,
 
   async (error) => {
-    if (error.response?.status === 401) {
-      // useAuthStore.getState().logout();
+    const errorResponse = error.response?.data;
+
+    if (errorResponse && typeof errorResponse === "object") {
+      const structuredError = {
+        error: errorResponse.error || "Error desconocido",
+        errors: errorResponse.errors || [],
+      };
+
+      error.response.data = structuredError;
     }
 
     return Promise.reject(error);

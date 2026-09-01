@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react-native';
-import Skeleton from '@/ui/shared/skeleton';
+import React from "react";
+import { render } from "@testing-library/react-native";
+import Skeleton from "@/ui/shared/skeleton";
 
-describe('ui/shared / Skeleton', () => {
-  it('usa los valores por defecto', () => {
+describe("ui/shared / Skeleton", () => {
+  it("usa los valores por defecto", () => {
     const { toJSON } = render(<Skeleton />);
     const tree = toJSON() as { props: { style: unknown[] } };
 
@@ -12,7 +12,7 @@ describe('ui/shared / Skeleton', () => {
     expect(JSON.stringify(tree.props.style)).toContain('"height":20');
   });
 
-  it('respeta width, height y borderRadius recibidos', () => {
+  it("respeta width, height y borderRadius recibidos", () => {
     const { toJSON } = render(
       <Skeleton width={120} height={40} borderRadius={12} />,
     );
@@ -25,7 +25,7 @@ describe('ui/shared / Skeleton', () => {
     expect(style).toContain('"borderRadius":12');
   });
 
-  it('mezcla el style externo', () => {
+  it("mezcla el style externo", () => {
     const { toJSON } = render(<Skeleton style={{ marginTop: 8 }} />);
 
     expect(JSON.stringify(toJSON())).toContain('"marginTop":8');

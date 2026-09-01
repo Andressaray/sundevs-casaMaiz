@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Animated,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useThemeColors } from '../../theme/colors';
+import React, { useEffect, useRef } from "react";
+import { Animated, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { FONTS } from "@/config/constants";
+import useTranslation from "@/hooks/useTranslations";
+
+import { useThemeColors } from "@/theme/colors";
 
 const CasaMaizLoadingScreen: React.FC = () => {
+  const { t } = useTranslation();
   const colors = useThemeColors();
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const loadingWidthAnim = useRef(new Animated.Value(0.1)).current;
@@ -21,7 +21,7 @@ const CasaMaizLoadingScreen: React.FC = () => {
         toValue: 360,
         duration: 3000,
         useNativeDriver: false,
-      })
+      }),
     ).start();
 
     Animated.loop(
@@ -36,7 +36,7 @@ const CasaMaizLoadingScreen: React.FC = () => {
           duration: 500,
           useNativeDriver: false,
         }),
-      ])
+      ]),
     ).start();
 
     Animated.loop(
@@ -51,7 +51,7 @@ const CasaMaizLoadingScreen: React.FC = () => {
           duration: 750,
           useNativeDriver: false,
         }),
-      ])
+      ]),
     ).start();
 
     Animated.loop(
@@ -66,22 +66,24 @@ const CasaMaizLoadingScreen: React.FC = () => {
           duration: 2000,
           useNativeDriver: false,
         }),
-      ])
+      ]),
     ).start();
   }, []);
 
   const spin = rotateAnim.interpolate({
     inputRange: [0, 360],
-    outputRange: ['0deg', '360deg'],
+    outputRange: ["0deg", "360deg"],
   });
 
   const loadingWidth = loadingWidthAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ['10%', '90%'],
+    outputRange: ["10%", "90%"],
   });
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.bgPrimary }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.bgPrimary }]}
+    >
       <View style={styles.contentContainer}>
         <View style={[styles.leaf, styles.leaf1]} />
         <View style={[styles.leaf, styles.leaf2]} />
@@ -92,10 +94,7 @@ const CasaMaizLoadingScreen: React.FC = () => {
           style={[
             styles.cornIcon,
             {
-              transform: [
-                { rotate: spin },
-                { scale: scaleAnim },
-              ],
+              transform: [{ rotate: spin }, { scale: scaleAnim }],
             },
           ]}
         >
@@ -127,10 +126,15 @@ const CasaMaizLoadingScreen: React.FC = () => {
             },
           ]}
         >
-          Cargando...
+          {t("common.loading")}
         </Animated.Text>
 
-        <View style={[styles.loadingBarContainer, { backgroundColor: colors.bgTertiary }]}>
+        <View
+          style={[
+            styles.loadingBarContainer,
+            { backgroundColor: colors.bgTertiary },
+          ]}
+        >
           <Animated.View
             style={[
               styles.loadingBarFill,
@@ -151,7 +155,7 @@ const CasaMaizLoadingScreen: React.FC = () => {
             },
           ]}
         >
-          Preparando experiencia
+          {t("loading.preparing")}
         </Animated.Text>
       </View>
     </SafeAreaView>
@@ -161,18 +165,18 @@ const CasaMaizLoadingScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   contentContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
   },
 
   leaf: {
-    position: 'absolute',
+    position: "absolute",
     opacity: 0.1,
   },
 
@@ -183,7 +187,7 @@ const styles = StyleSheet.create({
     left: -50,
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: '#A85C2C',
+    borderColor: "#A85C2C",
   },
 
   leaf2: {
@@ -193,7 +197,7 @@ const styles = StyleSheet.create({
     right: -30,
     borderRadius: 40,
     borderWidth: 2,
-    borderColor: '#A85C2C',
+    borderColor: "#A85C2C",
   },
 
   leaf3: {
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
     right: -30,
     borderRadius: 30,
     borderWidth: 1.5,
-    borderColor: '#A85C2C',
+    borderColor: "#A85C2C",
   },
 
   leaf4: {
@@ -213,7 +217,7 @@ const styles = StyleSheet.create({
     left: -40,
     borderRadius: 45,
     borderWidth: 2,
-    borderColor: '#A85C2C',
+    borderColor: "#A85C2C",
   },
 
   cornIcon: {
@@ -223,12 +227,12 @@ const styles = StyleSheet.create({
   cornCob: {
     width: 40,
     height: 70,
-    backgroundColor: '#D4A574',
+    backgroundColor: "#D4A574",
     borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    shadowColor: '#000',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -236,10 +240,10 @@ const styles = StyleSheet.create({
   },
 
   kernel: {
-    position: 'absolute',
+    position: "absolute",
     width: 6,
     height: 6,
-    backgroundColor: 'rgba(212, 165, 116, 0.7)',
+    backgroundColor: "rgba(212, 165, 116, 0.7)",
     borderRadius: 3,
   },
 
@@ -254,29 +258,29 @@ const styles = StyleSheet.create({
   kernel9: { left: 26, top: 34 },
 
   leafTop: {
-    position: 'absolute',
+    position: "absolute",
     width: 8,
     height: 25,
-    backgroundColor: '#5A7A3A',
+    backgroundColor: "#5A7A3A",
     top: -15,
     borderRadius: 10,
   },
 
   leafTop1: {
     left: 8,
-    transform: [{ rotate: '-20deg' }],
+    transform: [{ rotate: "-20deg" }],
   },
 
   leafTop2: {
     right: 8,
-    transform: [{ rotate: '20deg' }],
+    transform: [{ rotate: "20deg" }],
   },
 
   title: {
     fontSize: 48,
-    fontWeight: '700',
+    fontWeight: "700",
     marginBottom: 8,
-    fontFamily: 'Poppins',
+    fontFamily: FONTS.regular,
   },
 
   subtitle: {
@@ -284,9 +288,9 @@ const styles = StyleSheet.create({
     opacity: 0.6,
     marginBottom: 40,
     letterSpacing: 1,
-    textTransform: 'uppercase',
-    fontWeight: '300',
-    fontFamily: 'Poppins',
+    textTransform: "uppercase",
+    fontWeight: "300",
+    fontFamily: FONTS.regular,
   },
 
   loadingBarContainer: {
@@ -294,18 +298,18 @@ const styles = StyleSheet.create({
     height: 3,
     borderRadius: 2,
     marginBottom: 20,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
 
   loadingBarFill: {
-    height: '100%',
+    height: "100%",
     borderRadius: 2,
   },
 
   loadingText: {
     fontSize: 12,
     letterSpacing: 0.5,
-    fontFamily: 'Poppins',
+    fontFamily: FONTS.regular,
   },
 });
 

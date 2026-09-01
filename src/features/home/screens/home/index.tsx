@@ -1,86 +1,83 @@
-import React from 'react';
-import {
-  Text,
-  ScrollView,
-  ActivityIndicator,
-  View,
-  RefreshControl,
-} from 'react-native';
-import useGetHomeData from '../../hooks/useHomeData';
-import useTranslation from '@/hooks/useTranslation';
-import Container from '@/ui/shared/container';
-import { BlockRenderer } from '@/components/blocks';
+import React, { useCallback } from "react";
+import { FlatList, RefreshControl } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
+
+import { BlockRenderer } from "@/components/blocks";
+import { ErrorFallback } from "@/components/ui/ErrorFallback";
+import { ROUTES, type RoutePath, type RouteValue } from "@/navigation";
+import { RootNavigationProp, navigateToRoute } from "@/navigation/types";
+import { COLORS } from "@/theme/colors";
+import Container from "@/ui/shared/container";
+
+import { HomeEmpty, HomeSkeleton } from "../../components";
+import useGetHomeData from "../../hooks/useHomeData";
+import Loading from "@/ui/shared/loading";
+import { AlertsContainer } from "@/components/ui";
 
 const HomeScreen = (): React.ReactElement => {
-  const { t } = useTranslation();
-  const { data, isLoading, isError, error, refetch, isRefetching } = useGetHomeData();
+  const navigation = useNavigation<RootNavigationProp>();
+  const { data, isLoading, isError, error, refetch, isRefetching } =
+    useGetHomeData();
 
-  console.log('🏠 HomeScreen - data:', data);
-  console.log('🏠 HomeScreen - isLoading:', isLoading);
-  console.log('🏠 HomeScreen - isError:', isError);
-
-  const handleNavigation = (path: string) => {
-    console.log('Navigate to:', path);
-  };
-
-  const handleRefresh = () => {
-    console.log('🔄 Refetching home data...');
+  const handleRefresh = useCallback((): void => {
     refetch();
-  };
+  }, [refetch]);
 
-  if (isLoading && !isRefetching) {
+  const handleNavigation = useCallback(
+    (path: string): void => {
+      if (path in ROUTES) {
+        const routePath = path as RoutePath;
+        const route = ROUTES[routePath] as RouteValue;
+        navigateToRoute(navigation, route);
+      }
+    },
+    [navigation],
+  );
+
+  if (isError && !data) {
     return (
       <Container>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" />
-        </View>
-      </Container>
-    );
-  }
-
-  if (isError) {
-    return (
-      <Container>
-        <Text>Error: {error?.message || t('error')}</Text>
+        <ErrorFallback
+          error={error ?? undefined}
+          titleKey="errors.general_error"
+          messageKey="errors.load_restaurant_content"
+          retryLabelKey="common.retry"
+          onRetry={refetch}
+          showDetails={false}
+        />
       </Container>
     );
   }
 
   const layout = data?.data?.layout;
 
-  if (!layout || layout.length === 0) {
-    return (
-      <Container>
-        <Text>No layout blocks found</Text>
-      </Container>
-    );
-  }
-
   return (
-    <ScrollView 
-      style={{ flex: 1 }}
-      refreshControl={
-        <RefreshControl
-          refreshing={isRefetching}
-          onRefresh={handleRefresh}
-          tintColor="#A85C2C"
-          progressViewOffset={10}
-        />
-      }
-    >
-      <Container>
-        {layout.map((block, index) => {
-          console.log(`🔄 Rendering block ${index}:`, block.blockType);
-          return (
-            <BlockRenderer
-              key={block.id || `block-${index}`}
-              block={block}
-              onNavigate={handleNavigation}
+    <Container>
+      <Loading
+        isLoading={isLoading && !isRefetching}
+        component={<HomeSkeleton />}
+      >
+        <FlatList
+          data={layout}
+          ListHeaderComponent={AlertsContainer}
+          ListEmptyComponent={<HomeEmpty onRetry={handleRefresh} />}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefetching}
+              onRefresh={handleRefresh}
+              tintColor={COLORS.light.bgTertiary}
+              progressViewOffset={10}
             />
-          );
-        })}
-      </Container>
-    </ScrollView>
+          }
+          renderItem={({ item }) => (
+            <BlockRenderer block={item} onNavigate={handleNavigation} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </Loading>
+    </Container>
   );
 };
 

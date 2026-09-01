@@ -1,14 +1,8 @@
-import * as React from "react"
-import Svg, { SvgProps, Path, Rect } from "react-native-svg"
+import * as React from "react";
+import Svg, { Path, Rect, SvgProps } from "react-native-svg";
 
 const ReservationIcon = (props: SvgProps) => (
-  <Svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    fill="none"
-    {...props}
-  >
+  <Svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
     <Rect
       x={3}
       y={4}
@@ -25,6 +19,6 @@ const ReservationIcon = (props: SvgProps) => (
       strokeLinecap="round"
     />
   </Svg>
-)
+);
 
-export default ReservationIcon
+export default ReservationIcon;

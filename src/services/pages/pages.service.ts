@@ -1,13 +1,16 @@
 import { api } from "@services/index";
-import { PagesServiceRequest } from "./pages.service.t";
+
+import { PagesRequest } from "./pages.types";
 
 class PagesService {
-    baseUrl = '/pages'
+  baseUrl = "/pages";
 
-    getDataByPage = async (request: PagesServiceRequest) => {
-        const response = await api.get(`${this.baseUrl}/${request.slug}`, { params: request });
-        return response.data;
-    };
+  getDataByPage = async (request: PagesRequest) => {
+    const response = await api.get(`${this.baseUrl}/${request.slug}`, {
+      params: request,
+    });
+    return response.data;
+  };
 }
 
-export default PagesService
+export default PagesService;
